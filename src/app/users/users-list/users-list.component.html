@@ -1,0 +1,11 @@
+<div *ngIf="loading">
+  Caregando
+</div>
+
+<div *ngIf="!loading && data">
+  <app-user *ngFor="let user of data.users" [user]="user"></app-user>
+</div>
+
+
+<button (click)="addUser()">Adicionar</button>
+<button (click)="refresh()">Refresh</button>

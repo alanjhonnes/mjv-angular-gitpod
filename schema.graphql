@@ -1,0 +1,38 @@
+directive @cacheControl(
+  maxAge: Int
+  scope: CacheControlScope
+) on FIELD_DEFINITION | OBJECT | INTERFACE
+type AddUserError {
+  error: String!
+}
+
+union AddUserResult = User | AddUserError
+enum CacheControlScope {
+  PUBLIC
+  PRIVATE
+}
+
+type Mutation {
+  addUser(user: UserInput!): AddUserResult
+}
+
+type Query {
+  users: [User!]!
+  context: String!
+}
+
+scalar Upload
+
+type User {
+  id: ID!
+  name: String!
+  age: Int!
+  friendIds: [Int!]!
+  friends: [User!]!
+}
+
+input UserInput {
+  name: String!
+  birthdate: String!
+}
+

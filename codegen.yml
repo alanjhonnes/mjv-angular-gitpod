@@ -1,0 +1,14 @@
+schema: schema.graphql
+documents: src/**/*.graphql
+generates:
+  ./src/types.d.ts:
+    plugins:
+      - typescript
+  ./src/services.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular
+  ./src/fragment-matcher.ts:
+    plugins:
+      - fragment-matcher

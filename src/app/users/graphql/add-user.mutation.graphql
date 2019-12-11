@@ -1,0 +1,14 @@
+mutation AddUser ($user: UserInput!) {
+  addUser(user: $user) {
+    __typename
+    ... on User {
+      id
+      name
+    }
+    ... on AddUserError {
+      error
+
+    }
+
+  }
+}
